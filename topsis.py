@@ -7,6 +7,7 @@ def calculate(info, matrix, weights):
     A_plus = []
     A_minus = []
 
+    # Construct the Normalized Decision Matrix
     for i in range(len(info[0])):
         summ = 0
 
@@ -15,6 +16,7 @@ def calculate(info, matrix, weights):
 
         summ = summ ** 0.5
 
+        # Construct the Weighted Normalized Decision Matrix
         row_best = 0
         row_worst = 100
         for j in range(len(info[1])):
@@ -25,6 +27,7 @@ def calculate(info, matrix, weights):
             if matrix[j][i] < row_worst:
                 row_worst = matrix[j][i]
 
+        # Determine Ideal and Negative-Ideal Solutions
         if info[2][i]:
             A_plus.append(row_best)
             A_minus.append(row_worst)
@@ -32,6 +35,7 @@ def calculate(info, matrix, weights):
             A_plus.append(row_worst)
             A_minus.append(row_best)
 
+    # Calculate the Separation Measure:
     S_plus = []
     S_minus = []
     print("Preparing matrix for determining solution: \n")
@@ -52,6 +56,8 @@ def calculate(info, matrix, weights):
 
         S_plus.append(summ_plus)
         S_minus.append(summ_minus)
+
+    # Calculate the Relative Closeness to the Ideal Solution
     C = []
     print("\nRelative closeness to the ideal solution: \n")
     for i in range(len(S_plus)):
