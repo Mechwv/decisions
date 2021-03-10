@@ -1,4 +1,8 @@
 def calculate(info, matrix, weights):
+    """
+    The Technique for Order of Preference by Similarity to Ideal Solution
+    TOPSIS is a multi-criteria decision analysis method
+    """
     print("\n\n -------- МЕТОД TOPSIS -------- \n")
     A_plus = []
     A_minus = []
@@ -30,13 +34,18 @@ def calculate(info, matrix, weights):
 
     S_plus = []
     S_minus = []
+    print("Preparing matrix for determining solution: \n")
     for i in range(len(info[1])):
         summ_plus = 0
         summ_minus = 0
 
+        row = []
         for j in range(len(info[0])):
+            row.append(round(matrix[i][j], 5))
             summ_plus += (matrix[i][j] - A_plus[j]) ** 2
             summ_minus += (matrix[i][j] - A_minus[j]) ** 2
+
+        print(f"A{i + 1} | {row}")
 
         summ_plus = summ_plus ** 0.5
         summ_minus = summ_minus ** 0.5
@@ -44,10 +53,11 @@ def calculate(info, matrix, weights):
         S_plus.append(summ_plus)
         S_minus.append(summ_minus)
     C = []
+    print("\nRelative closeness to the ideal solution: \n")
     for i in range(len(S_plus)):
         C.append(S_minus[i] / (S_plus[i] + S_minus[i]))
         print(f"A{i} => {C[i]}")
     maxx = max(C)
     minn = min(C)
-    print(f"Best: A{C.index(maxx)}")
+    print(f"\nBest: A{C.index(maxx)}")
     print(f"Worst: A{C.index(minn)}")

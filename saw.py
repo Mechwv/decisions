@@ -1,4 +1,8 @@
 def calculate(info, matrix, weights):
+    """
+    SAW — Simple additive weighting method или
+    метод простого суммарного взвешивания
+    """
     print("\n\n -------- МЕТОД SAW -------- \n")
     row = 0
     best_sum = 0

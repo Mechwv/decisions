@@ -1,7 +1,4 @@
-import random
 import numpy as np
-
-
 
 alternatives = []
 indicators = []
@@ -138,4 +135,3 @@ def calculate(attr, matrix, expert):
     _soglasie()
     _nesoglasie()
     return _best_alt()
-
