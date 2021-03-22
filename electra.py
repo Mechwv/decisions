@@ -58,7 +58,7 @@ def _soglasie():
                 row.append(round(__s_index(matrix[:, i], matrix[:, j]), 2))
             else:
                 row.append(100)
-        print(f"A{i + 1} | {row}")
+        print(f"A{i + 1} | {row} => {min(row)}")
         soglasie_table.append(min(row))
 
 
@@ -90,7 +90,7 @@ def _nesoglasie():
                 row.append(round(__n_index(matrix[:, i], matrix[:, j]), 2))
             else:
                 row.append(0)
-        print(f"A{i + 1} | {row}")
+        print(f"A{i + 1} | {row} => {max(row)}")
         nesoglasie_table.append(max(row))
 
 
